@@ -1,7 +1,7 @@
 # IMPORTS
 import os
 import winreg
-import hashlib
+from subprocess import Popen
 
 
 # GLOBAL VARIABLES
@@ -10,14 +10,33 @@ g_variable = ""
 
 # FUNCTIONS
 def main():
-
-    find_steam_dir()
-
-def execute():
-    os.system('')
+    Popen("cmd.exe", shell=True)
+    print("Arma 3 install path identified as: " + "'" + dir_find_steam_dir() + "'")
 
 
-def find_steam_dir():
+def execute(l_parameters):
+    l_steam_dir = "C:\\Games\\steamapps\\common\\Arma 3"
+    l_exec_string = Popen(l_steam_dir + "\\arma3.exe" + l_parameters)
+
+
+def dir_find_steam_dir():
+    l_possible_steam_dirs = ['C:\\Program Files\\Steam\\steamapps\\common\\Arma 3',
+                             'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3',
+                             'E:\\Program Files\\Steam\\steamapps\\common\\Arma 3',
+                             'E:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3',
+                             'C:\\Games\\steamapps\\common\\Arma 3']
+
+    for path in l_possible_steam_dirs:
+        if os.path.isdir(path) is True:
+            return path
+        elif os.path.isdir(path) is False:
+            pass
+        else:
+            print("ERROR: Path check failed for " + path)
+            pass
+
+
+def reg_find_steam_dir():
     l_steam_directory = ""
     l_steam_dir_found = False
     l_possible_steam_dirs = ['C:\\Program Files\\Steam\\steamapps\\common\\']
