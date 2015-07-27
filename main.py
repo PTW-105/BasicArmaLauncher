@@ -87,7 +87,7 @@ def parameters():
                 else:
                     fault = False
 
-     l_param = "".join(l_param)
+    l_param = "".join(l_param)
     return l_param
 
 
