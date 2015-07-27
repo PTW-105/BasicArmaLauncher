@@ -53,7 +53,7 @@ def parameters():
     l_param= []
     l_npm = 0
     l_move = True
-    while move is True:
+    while l_move is True:
         print("Number of Parameters Entered", l_npm)
         i = input("Enter a Parameter: ")
         l_param.append(i)
@@ -63,7 +63,7 @@ def parameters():
             print("Continuing Parameter Input")
             l_npm += 1
         elif call == "n":
-            move = False
+            l_move = False
             print("Exiting Parameter Input...")
             print("Parameters Selected:")
         else:
@@ -73,11 +73,11 @@ def parameters():
                 call2 = str.lower(call2)
                 if call2 == "y":
                     print("Continuing Parameter Input")
-                    move = True
+                    l_move = True
                     l_npm += 1
                     break
                 elif call2 == "n":
-                    move = False
+                    l_move = False
                     print("Exiting Parameter Input...")
                     print("Parameters Selected:")
                     break
