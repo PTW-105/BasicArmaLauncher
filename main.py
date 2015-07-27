@@ -18,7 +18,6 @@ def main():
 
 
 def execute(l_steam_dir, l_parameters):
-#    l_exec_string = Popen(l_steam_dir + "\\arma3.exe" + l_parameters)
     print(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
 #    Popen(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
 
@@ -47,7 +46,9 @@ def reg_find_steam_dir():
 
 #    l_steam_reg_path = r"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 107410"
     l_steam_reg_path = r'SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall'
-    l_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 107410', 0, (winreg.KEY_WOW64_64KEY + winreg.KEY_ALL_ACCESS))
+    l_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
+                           l_steam_reg_path, 0,
+                           (winreg.KEY_WOW64_64KEY + winreg.KEY_ALL_ACCESS))
     val = winreg.QueryValue(l_key, "InstallLocation")
     return val
 
