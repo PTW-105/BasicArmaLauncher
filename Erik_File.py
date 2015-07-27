@@ -4,7 +4,7 @@ import hashlib
 
 
 # GLOBAL VARIABLES
-g_variable = []
+g_param= []
 g_npm = 0
 move = True
 
@@ -16,7 +16,7 @@ def param():
 while move is True:
         print("Number of Parameters Entered", g_npm)
         i = input("Enter a Parameter: ")
-        g_variable.append(i)
+        g_param.append(i)
         call = input("Add Another Parameter?(Y,N) ")
         call = str.lower(call)
         if call == "y":
