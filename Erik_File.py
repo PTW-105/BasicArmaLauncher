@@ -22,7 +22,7 @@ while move is True:
         if call == "y":
             print("Continuing Parameter Input")
             g_npm += 1
-        elif call =="n":
+        elif call == "n":
             move = False
             print("Exiting Parameter Input...")
             print("Parameters Selected:")
@@ -43,9 +43,3 @@ while move is True:
                     print("Parameters Selected:")
                 else:
                     fault = False
-
-
-
-x = 0
-for x in g_variable:
-    print(x)
