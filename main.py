@@ -19,8 +19,8 @@ def main():
 
 def execute(l_steam_dir, l_parameters):
 #    l_exec_string = Popen(l_steam_dir + "\\arma3.exe" + l_parameters)
-    print(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
-#    Popen(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
+#    print(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
+    Popen(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
 
 
 def dir_find_steam_dir():
