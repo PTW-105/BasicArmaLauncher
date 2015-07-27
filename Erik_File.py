@@ -6,25 +6,24 @@ import hashlib
 # GLOBAL VARIABLES
 g_variable = []
 g_npm = 0
-move = 1
+move = True
+
 # FUNCTIONS
 def param():
     pass
 
 
-move = 1
-g_npm = 0
-while move == 1:
+while move is True:
         print("Number of Parameters Entered", g_npm)
         i = input("Enter a Parameter: ")
         g_variable.append(i)
         call = input("Add Another Parameter?(Y,N) ")
-        if call == "Y":
-            move = 1
+        call = str.lower(call)
+        if call == "y":
             print("Continuing Parameter Input")
             g_npm += 1
         else:
-            move = 0
+            move = False
             print("Exiting Parameter Input...")
             print("Parameters Selected:")
 x = 0
