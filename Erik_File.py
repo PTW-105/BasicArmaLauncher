@@ -18,8 +18,8 @@ while move == 1:
         print("Number of Parameters Entered", g_npm)
         i = input("Enter a Parameter: ")
         g_variable.append(i)
-        call = input("Add Another Parameter?(Yes,No) ")
-        if call == "Yes":
+        call = input("Add Another Parameter?(Y,N) ")
+        if call == "Y":
             move = 1
             print("Continuing Parameter Input")
             g_npm += 1
