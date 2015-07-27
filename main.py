@@ -11,12 +11,15 @@ g_variable = ""
 # FUNCTIONS
 def main():
     Popen("cmd.exe", shell=True)
-    print("Arma 3 install path identified as: " + "'" + dir_find_steam_dir() + "'")
+    l_steam_dir = dir_find_steam_dir()
+    print("Arma 3 install path identified as: " + "'" + l_steam_dir + "'")
 
+    execute(l_steam_dir, l_parameters)
 
-def execute(l_parameters):
-    l_steam_dir = "C:\\Games\\steamapps\\common\\Arma 3"
+def execute(l_steam_dir, l_parameters):
     l_exec_string = Popen(l_steam_dir + "\\arma3.exe" + l_parameters)
+    print(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
+#    Popen(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
 
 
 def dir_find_steam_dir():
