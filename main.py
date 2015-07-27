@@ -7,18 +7,16 @@ from subprocess import Popen
 # GLOBAL VARIABLES
 g_variable = ""
 
-
 # FUNCTIONS
 def main():
-    Popen("cls", shell=True)
+    Popen("cmd.exe", shell=True)
     l_steam_dir = dir_find_steam_dir()
     print("Arma 3 install path identified as: " + "'" + l_steam_dir + "'")
     l_parameters = parameters()
     execute(l_steam_dir, l_parameters)
 
-
 def execute(l_steam_dir, l_parameters):
-#    l_exec_string = Popen(l_steam_dir + "\\arma3.exe" + l_parameters)
+    l_exec_string = Popen(l_steam_dir + "\\arma3.exe" + l_parameters)
     print(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
 #    Popen(l_steam_dir + "\\arma3.exe" + " -mod=" + l_parameters)
 
@@ -49,11 +47,10 @@ def reg_find_steam_dir():
     l_steam_reg_path = r'SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall'
     l_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 107410', 0, (winreg.KEY_WOW64_64KEY + winreg.KEY_ALL_ACCESS))
     val = winreg.QueryValue(l_key, "InstallLocation")
-    return val
-
+    return(val)
 
 def parameters():
-    l_param = []
+    l_param= []
     l_npm = 0
     l_move = True
     while l_move is True:
@@ -86,7 +83,6 @@ def parameters():
                     break
                 else:
                     fault = False
+    l_param = ''.join(l_param)
     return l_param
-
-
 main()
