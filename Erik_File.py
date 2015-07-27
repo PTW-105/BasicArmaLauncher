@@ -22,10 +22,30 @@ while move is True:
         if call == "y":
             print("Continuing Parameter Input")
             g_npm += 1
-        else:
+        elif call =="n":
             move = False
             print("Exiting Parameter Input...")
             print("Parameters Selected:")
+        else:
+            fault = False
+            while fault is False:
+                call2 = input("Invalid Input, Please Try Again: ")
+                call2 = str.lower(call2)
+                if call2 == "y":
+                    print("Continuing Parameter Input")
+                    move = True
+                    g_npm += 1
+                    fault = True
+                elif call2 == "n":
+                    move = False
+                    fault = True
+                    print("Exiting Parameter Input...")
+                    print("Parameters Selected:")
+                else:
+                    fault = False
+
+
+
 x = 0
 for x in g_variable:
     print(x)
