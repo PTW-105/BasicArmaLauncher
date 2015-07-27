@@ -15,7 +15,7 @@ def main():
     Popen("cmd.exe", shell=True)
     l_steam_dir = dir_find_steam_dir()
     print("Arma 3 install path identified as: " + "'" + l_steam_dir + "'")
-
+    l_parameters = parameters()
     execute(l_steam_dir, l_parameters)
 
 def execute(l_steam_dir, l_parameters):
@@ -52,7 +52,7 @@ def reg_find_steam_dir():
     val = winreg.QueryValue(l_key, "InstallLocation")
     return(val)
 
-def param():
+def parameters():
     while move is True:
             print("Number of Parameters Entered", g_npm)
             i = input("Enter a Parameter: ")
@@ -83,5 +83,5 @@ def param():
                         print("Parameters Selected:")
                     else:
                         fault = False
-pass
+                        pass
 main()
