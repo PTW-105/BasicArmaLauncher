@@ -11,3 +11,4 @@ g_variable = ""
 def main():
     pass
 
+main()
