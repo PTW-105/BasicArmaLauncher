@@ -68,7 +68,6 @@ def parameters():
         elif call == "n":
             l_move = False
             print("Exiting Parameter Input...")
-            print("Parameters Selected:")
         else:
             fault = False
             while fault is False:
