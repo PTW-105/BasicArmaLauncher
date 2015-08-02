@@ -1,6 +1,11 @@
 # IMPORTS
 import os
 import hashlib
+import timeit
+
+
+# GLOBAL VARIABLES
+standalone_exec = False
 
 
 # FUNCTIONS
@@ -18,10 +23,17 @@ def process_modfolder(l_modfolder):
 
     Modify 'output()' function to suite output needs (CSV, XML, SQL, etc.).
     """
+    time_start = timeit.default_timer()
     l_mod_files = list_files(l_modfolder)
+    number_of_files = 0
     for f in l_mod_files:
+        number_of_files += 1
         l_hashed_return = hash_files(f)
         output(l_hashed_return[0], l_hashed_return[1], l_hashed_return[2], l_hashed_return[3])
+    time_end = timeit.default_timer()
+    time_total = time_end - time_start
+    print()
+    print("Processed {0} files in {1}s.".format(number_of_files, round(time_total, 2)))
     print("Modfolder files successfully enumerated and hashed!  See 'mod_output_file.csv' for output.")
     exit()
 
@@ -46,6 +58,25 @@ def hash_files(l_mod_file):
 
 
 def output(l_file, l_dir, l_sha1, l_sha256):
-    l_output_string = l_file + ", " + l_dir + ", " + l_sha1 + ", " + l_sha256 + "\n"
+    global standalone_exec
+    l_output_string = l_file + ", " + l_dir + ", " + l_sha1 + ", " + l_sha256
     with open('mod_output_file.csv', 'a+') as f:
-        f.write(l_output_string)
+        f.write(l_output_string + "\n")
+    if standalone_exec is True:
+        print(l_output_string)
+
+
+def alt_init():
+    global standalone_exec
+    print("What modfolder would you like to process? ")
+    path = input()
+    if os.path.isdir(path) is True:
+        standalone_exec = True
+        process_modfolder(path)
+    else:
+        print("ERROR: Path provided is not valid.")
+        print("Exiting...")
+        exit()
+
+alt_init()
+
