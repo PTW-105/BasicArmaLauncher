@@ -2,7 +2,9 @@
 import os
 import winreg
 from subprocess import Popen
-
+from PyQt5.QtWidgets import QApplication
+import sys
+from GUI import Window
 
 # GLOBAL VARIABLES
 g_variable = ""
@@ -57,17 +59,17 @@ def parameters():
     l_npm = 0
     l_move = True
     while l_move is True:
-        print("Number of Parameters Entered", l_npm)
         i = input("Enter a Parameter: ")
         l_param.append(i)
         call = input("Add Another Parameter?(Y,N) ")
         call = str.lower(call)
         if call == "y":
-            print("Continuing Parameter Input")
+            print("Continuing Parameter Input...//")
             l_npm += 1
         elif call == "n":
             l_move = False
             print("Exiting Parameter Input...")
+            print("Number of Parameters Entered", l_npm)
         else:
             fault = False
             while fault is False:
@@ -89,5 +91,10 @@ def parameters():
     l_param = "".join(l_param)
     return l_param
 
+if __name__ == '__main__':
 
+    app = QApplication(sys.argv)
+    ex = Window()
+    ex.show()
+    sys.exit(app.exec_())
 main()
